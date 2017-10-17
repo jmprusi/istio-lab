@@ -113,7 +113,7 @@ oc apply -f install/kubernetes/addons/grafana.yaml
 oc apply -f install/kubernetes/addons/servicegraph.yaml
 oc apply -f install/kubernetes/addons/zipkin.yaml
 ```
-
+You will need to modify the yml template for servicegraph, changing the TAG from latest to 0.1.6
 ### Expose addons
 
 ```
@@ -127,7 +127,7 @@ oc expose svc zipkin
 
 ```
 curl -L https://git.io/getIstio | sh -
-export PATH="$PATH:$(PWD)/istio-0.1.6/bin"
+export PATH="$PATH:$(pwd)/istio-0.1.6/bin"
 cd istio-0.1.6
 ```
 
