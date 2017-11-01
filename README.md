@@ -57,7 +57,7 @@ Windows:
 ### Start your openshift Cluster
 
 We are using docker for mac.
-Make sure your docker daemon has this parameter: "--insecure-registry 172.30.0.0/16"
+Make sure your docker daemon has this parameter: "--insecure-registry 172.30.0.0/16" and "docker.io"
 
 Then run:
 ```
@@ -127,7 +127,7 @@ oc expose svc zipkin
 
 ```
 curl -L https://git.io/getIstio | sh -
-export PATH="$PATH:$(PWD)/istio-0.1.6/bin"
+export PATH="$PATH:$(pwd)/istio-0.1.6/bin"
 cd istio-0.1.6
 ```
 
@@ -144,7 +144,7 @@ oc apply -f <(istioctl kube-inject  -f samples/apps/bookinfo/bookinfo.yaml)
 ```
 colordiff samples/apps/bookinfo/bookinfo.yaml <(istioctl kube-inject  -f samples/apps/bookinfo/bookinfo.yaml)
 ```
-
+Note: colordiff can be found here: https://www.colordiff.org/
 ### Expose istio-ingress
 
 ```
