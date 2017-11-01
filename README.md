@@ -61,7 +61,7 @@ Make sure your docker daemon has this parameter: "--insecure-registry 172.30.0.0
 
 Then run:
 ```
-oc cluster up --routing-suffix="apps.127.0.0.1.nip.io"
+oc cluster up --version="v1.5.1" --routing-suffix="apps.127.0.0.1.nip.io"
 ```
 
 ### Login as admin
