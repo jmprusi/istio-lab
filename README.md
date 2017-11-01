@@ -106,6 +106,19 @@ cd istio && git checkout 0.1.6
 oc apply -f install/kubernetes/istio.yaml
 ```
 
+### Fix issue with servicegraph version
+```
+vi install/kubernetes/addons/servicegraph.yaml
+```
+Modify the line that states:
+```
+image: gcr.io/istio-testing/servicegraph:latest
+```
+to:
+```
+image: gcr.io/istio-testing/servicegraph:0.1.6
+```
+
 ### Install addons
 ```
 oc apply -f install/kubernetes/addons/prometheus.yaml
