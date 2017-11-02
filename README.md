@@ -57,11 +57,11 @@ Windows:
 ### Start your openshift Cluster
 
 We are using docker for mac.
-Make sure your docker daemon has this parameter: "--insecure-registry 172.30.0.0/16"
+Make sure your docker daemon has this parameter: "--insecure-registry 172.30.0.0/16" and "docker.io"
 
 Then run:
 ```
-oc cluster up --routing-suffix="apps.127.0.0.1.nip.io"
+oc cluster up --version="v1.5.1" --routing-suffix="apps.127.0.0.1.nip.io"
 ```
 
 ### Login as admin
@@ -106,6 +106,19 @@ cd istio && git checkout 0.1.6
 oc apply -f install/kubernetes/istio.yaml
 ```
 
+### Fix issue with servicegraph version
+```
+vi install/kubernetes/addons/servicegraph.yaml
+```
+Modify the line that states:
+```
+image: gcr.io/istio-testing/servicegraph:latest
+```
+to:
+```
+image: gcr.io/istio-testing/servicegraph:0.1.6
+```
+
 ### Install addons
 ```
 oc apply -f install/kubernetes/addons/prometheus.yaml
@@ -144,7 +157,7 @@ oc apply -f <(istioctl kube-inject  -f samples/apps/bookinfo/bookinfo.yaml)
 ```
 colordiff samples/apps/bookinfo/bookinfo.yaml <(istioctl kube-inject  -f samples/apps/bookinfo/bookinfo.yaml)
 ```
-
+Note: colordiff can be found here: https://www.colordiff.org/
 ### Expose istio-ingress
 
 ```
